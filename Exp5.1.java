@@ -36,3 +36,52 @@ Expected Output:
 Invalid number format: invalid
 The sum of the list is: 120
 Description: One of the inputs is not a valid integer, so it's skipped, and the sum of valid values is calculated.
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+
+    
+    public static Integer parseStringToInteger(String str) {
+        try {
+            return Integer.parseInt(str);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid number format: " + str);
+            return null; 
+        }
+    }
+
+    public static int calculateSum(List<Integer> numbers) {
+        int sum = 0;
+        for (Integer number : numbers) {
+            if (number != null) { 
+                sum += number; 
+            }
+        }
+        return sum;
+    }
+
+    public static void main(String[] args) {
+        
+        List<Integer> numbers = new ArrayList<>();
+
+        
+        numbers.add(10);
+        numbers.add(20);
+        numbers.add(30);
+        
+        numbers.add(parseStringToInteger("40"));
+        numbers.add(parseStringToInteger("50"));
+        numbers.add(parseStringToInteger("100"));
+        numbers.add(parseStringToInteger("200"));
+        numbers.add(parseStringToInteger("300"));
+        numbers.add(parseStringToInteger("50"));
+        numbers.add(parseStringToInteger("invalid")); 
+        numbers.add(parseStringToInteger("70"));
+
+        int sum = calculateSum(numbers);
+
+        System.out.println("The sum of the list is: " + sum);
+    }
+}  
